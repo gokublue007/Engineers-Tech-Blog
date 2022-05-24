@@ -1,0 +1,10 @@
+<div class="card thread-card mt-3" data-id="{{id}}">
+    <div class="thread-block card-body">
+        <a class="link thread-link" href="/threads/{{id}}">
+            <header class="thread-head">{{title}}</header>
+            {{!-- <p class="thread-text">{{text_body}}</p> --}}
+            <p class="home-signature">Threaded By: {{user.username}}</p>
+            <p><span class="dateTime"> {{format_date date_created}} @ {{format_time createdAt}}</span></p>
+        </a>
+    </div>
+</div>
