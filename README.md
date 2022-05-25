@@ -16,9 +16,9 @@
 
 ## Deployment
 
-![Project Image](./assets/img/14-mvc-homework-demo-01.gif)
+![Project Image](./img/14-mvc-homework-demo-01.gif)
 
-![Website Deployment]()
+- [Website Deployment](https://git.heroku.com/fierce-reef-90500.git)
 
 - [Video Demonstration](https://drive.google.com/file/d/1WERTakHTslT-6C3Yzd9rwkAWG_0cFeE2/view?usp=sharing)
 

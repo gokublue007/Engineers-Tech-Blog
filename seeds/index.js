@@ -1,6 +1,6 @@
 //* Import sequelize and the seeds
 const sequelize = require('../config/connection');
-const seedComments = require('./comment');
+const seedComments = require('./Comment');
 const seedThreads = require('./threads');
 const seedUsers = require('./users');
 
