@@ -6,19 +6,19 @@ const commentData = [
 {
     comment_body:
     "Wow. This post really helped me with a student I've been tutoring. Thanks for sharing!",
-    date_created: "May 31, 2022",
+    date_created: "May 18, 2022",
     user_id: 2,
     thread_id: 1,
 },
 {
     comment_body: "Yes! Thank you for sharing! Story of my life!",
-    date_created: "May 31, 2022",
+    date_created: "May 18, 2022",
     user_id: 3,
     thread_id: 1,
 },
 {
     comment_body: "LOL. I realized the same thing two days ago!",
-    date_created: "May 31, 2022",
+    date_created: "May 18, 2022",
     user_id: 1,
     thread_id: 2,
 },
