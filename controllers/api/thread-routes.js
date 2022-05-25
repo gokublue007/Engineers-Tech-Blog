@@ -20,9 +20,9 @@ router.post("/", withAuth, async (req, res) => {
         newThread.user_id
       )
     ) {
-      res.status(404).json({
-        message: "Please enter data in all the required fields...",
-      });
+      res
+        .status(404)
+        .json({ message: "Please enter data in all the required fields..." });
     }
     res.status(200).json(newThread);
   } catch (err) {
@@ -45,9 +45,7 @@ router.put("/:id", withAuth, async (req, res) => {
       }
     );
     if (!selectedThread[0])
-      res.status(404).json({
-        message: "That thread doesn't exist...",
-      });
+      res.status(404).json({ message: "That thread doesn't exist..." });
     res.status(200).json(selectedThread);
   } catch (err) {
     res.status(500).json(err);
@@ -63,9 +61,7 @@ router.delete("/:id", withAuth, async (req, res) => {
       },
     });
     if (!selectedThread) {
-      res.status(404).json({
-        message: "That thread can't be deleted...",
-      });
+      res.status(404).json({ message: "That thread can't be deleted..." });
     }
     res.status(200).json(selectedThread);
   } catch (err) {
