@@ -1,55 +1,41 @@
-///* IMPORT EVERYTHING NEEDED TO CREATE SERVER
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-
-//* IMPORT HELPERS AND ROUTES
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-
-require('dotenv').config();
-
-//* INITIALIZE APP AND ESTABLISH PORT
-const app = express();
-const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-//* CREATE SESSION OBJECT
-const sessionObj = {
-  secret: process.env.DB_SESSION_SECRET,
-  cookie: {
-    maxAge: 3000000
-  },
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Set up Handlebars.js engine with custom helpers
+const hbs = exphbs.create({ helpers });
+
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
   resave: false,
   saveUninitialized: true,
-  //* CREATE SEQUELIZE STORE FOR SESSION
   store: new SequelizeStore({
-    db: sequelize,
-  }),
+    db: sequelize
+  })
 };
 
-//* INSTANTIATE SESSION MIDDLEWARE
-app.use(session(sessionObj));
+app.use(session(sess));
 
-//* BRING IN HELPERS
-const hbs = exphbs.create({helpers});
-
-//* START UP HANDLEBARS ENGINE AND INSTANTIATE VIEWS
+// Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-//* INSTANTIATE TYPICAL EXPRESS MIDDLEWARE
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//* MIDDLEWARE FOR THE ROUTES
 app.use(routes);
 
-//* OPEN PORT AND OPEN SEQUELIZE COMMUNICATION
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
